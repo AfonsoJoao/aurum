@@ -17,4 +17,18 @@ class Admin_model extends CI_Model{
 			$this->db->insert('admin', $dados);
 		}
 	}
+
+	public function getAdminById($id = NULL){
+		if($id != NULL){
+			$this->db->where('id', $id);
+			$this->db->limit(1);
+			$query = $this->db->get("admin");
+			return $query->row();
+		}
+	}
+	public function editAdmin($dados = NULL, $id = NULL){
+		if($dados != NULL && $id != NULL){
+			$this->db->update('admin', $dados, array('id' => $id));
+		}
+	}
 }

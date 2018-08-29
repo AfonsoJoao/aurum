@@ -8,9 +8,7 @@ class Admin extends CI_Controller {
 
         $data['admins'] = $this->admin->getAdmin();
 
-        $this->load->view('template/header', $data);
         $this->load->view('admin/listar', $data);
-        $this->load->view('template/footer', $data);
 	}
 
     //adcionar adm
@@ -18,9 +16,7 @@ class Admin extends CI_Controller {
         //chamando a model
         $this->load->model('admin_model', 'admin');
         $data = array();
-        $this->load->view('template/header', $data);
         $this->load->view('admin/add', $data);
-        $this->load->view('template/footer', $data);
 
     }
 
@@ -28,12 +24,45 @@ class Admin extends CI_Controller {
         if(!empty($this->input->post('login'))){
             $this->load->model('admin_model', 'admin');
             $data['login'] = $this->input->post('login');
-            $data['senha'] = mds5($this->input->post('senha'));
+            $data['senha'] = md5($this->input->post('senha'));
             $data['nome'] = $this->input->post('nome');
 
-            $this->admin->addAdmin($data);
+            if(!empty($this->input->post('id'))){
+                $this->admin->editAdmin($data, $this->input->post('id'));
+            }else{
+                $this->admin->addAdmin($data);
+            }
 
             //redirect("/");
         }
+    }
+
+    public function editar($id = NULL){
+        if($id == NULL){
+            redirect('/');
+        }
+
+        $this->load->model('admin_model', 'admin');
+
+        $query = $this->admin->getAdminById(1);
+        if ($query == NULL) {
+            //redirect('/');
+        }
+
+
+
+        if(!empty($this->input->post('login'))){
+            $this->load->model('admin_model', 'admin');
+            $data['login'] = $this->input->post('login');
+            $data['senha'] = md5($this->input->post('senha'));
+            $data['nome'] = $this->input->post('nome');
+
+            if(!empty($this->input->post('id'))){
+                $this->admin->editAdmin($data, $this->input->post('id'));
+            }
+            redirect("/");
+        }
+        $data['produto'] = $query;
+        $this->load->view('admin/edit', $data);
     }
 }
