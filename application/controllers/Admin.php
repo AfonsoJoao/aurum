@@ -44,9 +44,9 @@ class Admin extends CI_Controller {
 
         $this->load->model('admin_model', 'admin');
 
-        $query = $this->admin->getAdminById(1);
+        $query = $this->admin->getAdminById($id);
         if ($query == NULL) {
-            //redirect('/');
+            redirect('/');
         }
 
 
@@ -64,5 +64,21 @@ class Admin extends CI_Controller {
         }
         $data['produto'] = $query;
         $this->load->view('admin/edit', $data);
+    }
+
+    public function apagar($id = NULL){
+        if($id == NULL){
+            redirect('/');
+        }
+
+        $this->load->model('admin_model', 'admin');
+        $query = $this->admin->getAdminById($id);
+        if ($query == NULL) {
+            //redirect('/');
+        }else{
+            $this->admin->apagarAdmin($id);
+            //redirect('/');
+        }
+
     }
 }

@@ -31,4 +31,10 @@ class Admin_model extends CI_Model{
 			$this->db->update('admin', $dados, array('id' => $id));
 		}
 	}
+
+	public function apagarAdmin($id = NULL){
+		if($id != NULL){
+			$this->db->delete('admin', array('id' => $id));
+		}
+	}
 }
