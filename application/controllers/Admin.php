@@ -8,15 +8,16 @@ class Admin extends CI_Controller {
 
         $data['admins'] = $this->admin->getAdmin();
 
-        $this->load->view('admin/listar', $data);
-	}
+        $this->template->load('template', 'admin/listar', $data);
+
+    }
 
     //adcionar adm
     public function add(){
         //chamando a model
         $this->load->model('admin_model', 'admin');
         $data = array();
-        $this->load->view('admin/add', $data);
+        $this->template->load('template', 'admin/add', $data);
 
     }
 
@@ -33,7 +34,7 @@ class Admin extends CI_Controller {
                 $this->admin->addAdmin($data);
             }
 
-            //redirect("/");
+            redirect("/");
         }
     }
 
@@ -46,7 +47,7 @@ class Admin extends CI_Controller {
 
         $query = $this->admin->getAdminById($id);
         if ($query == NULL) {
-            redirect('/');
+            //redirect('/');
         }
 
 
@@ -59,10 +60,12 @@ class Admin extends CI_Controller {
 
             if(!empty($this->input->post('id'))){
                 $this->admin->editAdmin($data, $this->input->post('id'));
+                $query = $this->admin->getAdminById($id);
             }
-            redirect("/");
+           // redirect("/");
         }
-        $data['produto'] = $query;
+        $data['admin'] = $query;
+
         $this->load->view('admin/edit', $data);
     }
 
@@ -74,10 +77,10 @@ class Admin extends CI_Controller {
         $this->load->model('admin_model', 'admin');
         $query = $this->admin->getAdminById($id);
         if ($query == NULL) {
-            //redirect('/');
+            redirect('/');
         }else{
             $this->admin->apagarAdmin($id);
-            //redirect('/');
+            redirect('/');
         }
 
     }
