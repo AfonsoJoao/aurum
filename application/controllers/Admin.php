@@ -3,11 +3,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 //responsavel por carregar paginas estaticas
 class Admin extends CI_Controller {
     //pagina principal, carregando index de produtos
+
 	public function index(){
         $this->load->model('admin_model', 'admin');
 
         $data['admins'] = $this->admin->getAdmin();
-
         $this->template->load('template', 'admin/listar', $data);
 
     }
@@ -33,9 +33,8 @@ class Admin extends CI_Controller {
             }else{
                 $this->admin->addAdmin($data);
             }
-
-            redirect("/");
         }
+        redirect("/");
     }
 
     public function editar($id = NULL){
@@ -47,7 +46,7 @@ class Admin extends CI_Controller {
 
         $query = $this->admin->getAdminById($id);
         if ($query == NULL) {
-            //redirect('/');
+            redirect('/');
         }
 
 
@@ -62,11 +61,11 @@ class Admin extends CI_Controller {
                 $this->admin->editAdmin($data, $this->input->post('id'));
                 $query = $this->admin->getAdminById($id);
             }
-           // redirect("/");
+            redirect("/");
         }
         $data['admin'] = $query;
 
-        $this->load->view('admin/edit', $data);
+         $this->template->load('template', 'admin/edit', $data);
     }
 
     public function apagar($id = NULL){
