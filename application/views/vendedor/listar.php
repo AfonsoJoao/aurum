@@ -5,7 +5,7 @@
       <div class="row">
               <div class="col-xs-12">
                   <h2 class="page-header">
-                  <i class="fa fa-globe"></i>Administradores Cadastrados
+                  <i class="fa fa-globe"></i>Vendedores Cadastrados
               </div>
         <!-- /.col -->
       </div>     
@@ -24,27 +24,23 @@
               <table class="table table-hover">
               	<thead>
 	                <tr>
-	                  <th>ID</th>
-	                  <th>Nome</th>
-	                  <th>Login</th>
-	                  <th>Senha</th>
-                    <th>Ações</th>
+	                  <th>CÓDIGO</th>
+	                  <th>NOME</th>
+	                  <th>CPF</th>
+	                  <th>PRAÇAS</th>
                   </tr>
                 </thead>
                 <tbody>
-                	<?php foreach ($admins as $admin): ?>
+                	<?php foreach ($vendedores as $vendedor): ?>
                 		<tr>
-                			<td><?php echo $admin['id']; ?></td>
-                			<td><?php echo $admin['nome']; ?></td>
-                			<td><?php echo $admin['login']; ?></td>
-                			<td><?php echo $admin['senha']; ?></td>
+                	                   			
                 			<td>
-                        <button type="button" class="btn btn-primary btn-xs"><a href="<?php echo base_url().'admin/editar/'.$admin['id']; ?>"><i class="fa fa-pencil"></i></a></button>
-                        <button type="button" class="btn btn-danger btn-xs"><a href="<?php echo base_url().'admin/apagar/'.$admin['id']; ?>"><i class="fa fa-trash"></i></a></button>  
+                        <button type="button" class="btn btn-primary btn-xs"><a href="<?php echo base_url().'vendedor/editar/'.$vendedor['id']; ?>"><i class="fa fa-pencil"></i></a></button>
+                        <button type="button" class="btn btn-danger btn-xs"><a href="<?php echo base_url().'vendedor/apagar/'.$vendedor['id']; ?>"><i class="fa fa-trash"></i></a></button>  
                         <button type="button" class="btn btn-info btn-xs"><a href=""><i class="fa fa-eye"></i></a></button>  
                       </td>
                 		</tr>
-                	<?php endforeach ?>
+                  <?php endforeach ?>
                 </tbody>
                 
               </table>
