@@ -7,3 +7,15 @@
 .btn-info{
 	background-color: #17a2b8;
 }
+.login-page{
+	background-image: url(../../dist/images/user8.jpg);
+
+}
+.login-box{
+	
+	width: 40%;
+}
+.login-box-body{
+	color: #fff;
+	background-color: #808080;
+}

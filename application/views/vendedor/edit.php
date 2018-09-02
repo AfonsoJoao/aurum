@@ -3,7 +3,7 @@
   <div class="row">
     <div class="col-xs-12">
       <h2 class="page-header">
-        <i class="fa fa-globe"></i> Cadastrar Vendedor
+        <i class="fa fa-globe"></i> Editar Vendedor
       </h2>
     </div>
   </div>
