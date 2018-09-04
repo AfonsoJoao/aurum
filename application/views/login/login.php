@@ -37,13 +37,13 @@
   <div class="login-box-body">
     <h4><p class="login-box-msg">Faça login para iniciar sua sessão</p></h4>
 
-    <form action="../../index2.html" method="post">
+    <form action="<?php echo base_url();?>login/entrar" method="post">
       <div class="form-group has-feedback">
-        <input type="text" class="form-control" placeholder="Usuário">
+        <input type="text" class="form-control" placeholder="Usuário" name="usuario">
         <span class="glyphicon glyphicon-user form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
-        <input type="password" class="form-control" placeholder="Senha">
+        <input type="password" class="form-control" placeholder="Senha" name="senha">
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
       </div>
       <div class="row">
@@ -56,6 +56,9 @@
         <!-- /.col -->
       </div>
     </form>
+     <?php if (!empty($erro)): ?>
+           <div class="alert alert-danger" role="alert" style="margin-top: 10px;"><?= $erro; ?></div>
+        <?php endif; ?>
   </div>
   <!-- /.login-box-body -->
 </div>

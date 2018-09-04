@@ -37,4 +37,14 @@ class Admin_model extends CI_Model{
 			$this->db->delete('admin', array('id' => $id));
 		}
 	}
+	public function login($dados = NULL){
+		if($dados != NULL){
+			$query = $this->db->get_where('admin', $dados);
+			//se tiver mais de um registro o login é positivo
+			if($query->num_rows() > 0){
+				return $query; 
+			}
+		}
+		return false;
+	}
 }

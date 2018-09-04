@@ -1,8 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-//responsavel por carregar paginas estaticas
-class Admin extends CI_Controller {
-    //pagina principal, carregando index de produtos
+class Admin extends MY_Controller {
 
 	public function index(){
         $this->load->model('admin_model', 'admin');
