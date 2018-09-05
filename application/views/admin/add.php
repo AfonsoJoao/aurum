@@ -12,7 +12,7 @@
 				<b>Informações Pessoais</b><br><br>
 				<div class="input-group">
 					<span class="input-group-addon">Nome</span>
-					<input type="text" class="form-control" name="nome">
+					<input type="text" class="form-control" name="nome" required="">
 				</div>
 				<br>         
 			</div>
@@ -20,13 +20,13 @@
 			<div class="col-sm-5 invoice-col">
 				<div class="input-group">
 					<span class="input-group-addon">Login</span>
-					<input type="text" class="form-control" name="login">
+					<input type="text" class="form-control" name="login" required="">
 				</div>
 			</div>  
 			<div class="col-sm-5 invoice-col">
 				<div class="input-group">
 					<span class="input-group-addon">Senha</span>
-					<input type="password" class="form-control" name="senha">
+					<input type="password" class="form-control" name="senha" required="">
 				</div><br> 
 			</div>
 		</div>

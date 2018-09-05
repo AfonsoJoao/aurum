@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Login extends CI_Controller{
 	public function index(){
 		$dados['erro'] = '';
-		$this->load->view('login/login', $dados);
+		$this->load->view('login', $dados);
 	}
 
 	public function entrar(){
@@ -20,12 +20,12 @@ class Login extends CI_Controller{
 				redirect(base_url('home'));
 	        }else{
 				$dados['erro'] = "Usuário/Senha incorretos";
-				$this->load->view('login/login', $dados);
+				$this->load->view('login', $dados);
 				return;
 			}
 		}
 		$dados['erro'] = "Erro No Login";
-		$this->load->view('login/login', $dados);
+		$this->load->view('login', $dados);
 	}
 
 	public function sair(){
