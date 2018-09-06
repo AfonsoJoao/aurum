@@ -2,11 +2,13 @@
 	var base_url = "<?php echo base_url(); ?>";
 	$(function(){
 		$('#select_estados').change(function(){
-			var id_estado = $('#select_estados').val;
-			$.post(base_url+'ajax/cidade/getCidade', {
+			var id_estado = $('#select_estados').val();
+			$.post(base_url+'ajax/cidade/getCidades', {
 				id_estado : id_estado
 			}, function(data){
-				console.log(data);
+				$('#select_cidades').html(data);
+				$('#select_cidades').removeAttr('disabled');
+
 			});
 		});
 

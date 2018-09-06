@@ -16,12 +16,12 @@ class Cidade_model extends CI_Model {
 
 
         public function select_cidade($estado = null){
-            $cidades = $this->cidade->getCidade();
+            $cidades = $this->getCidadeByEstado($estado);
             $option = "<option value=''></option>";
-            foreach($estados -> result() as $linha) {
+            foreach($cidades -> result() as $linha) {
                 $option .= "<option value='$linha->idCidade'>$linha->nome</option>"; 
             }
-            return $data['select_cidade'] = $option;
+            return  $option;
         }
 
         

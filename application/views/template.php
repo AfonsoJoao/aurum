@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
+
+  <script < src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Aurum Soft</title>
