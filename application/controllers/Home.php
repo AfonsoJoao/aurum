@@ -8,11 +8,7 @@ class Home extends MY_Controller {
     }
 	public function index(){
 		$data['select_estados'] = $this->estado->select_estado();
-		
-
-
         $this->template->load('template', 'home', $data);
-
     }
 }
 

@@ -11,7 +11,7 @@ class Admin extends MY_Controller {
     }
 
     //adcionar adm
-    public function add(){
+    public function adicionar(){
         //chamando a model
         $this->load->model('admin_model', 'admin');
         $data = array();

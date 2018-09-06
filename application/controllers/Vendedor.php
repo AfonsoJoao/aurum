@@ -6,11 +6,10 @@
        		 $data['vendedores'] = array('nome' => 'Gabriel','cpf' => '068.121.121-22');
        		 $this->template->load('template', 'vendedor/listar', $data);
     	}
-		public function add(){
+		public function adicionar(){
 			$data = array();
 			$this->template->load('template', 'vendedor/add', $data);
-		}	
-		
+		}			
 
 	}
 

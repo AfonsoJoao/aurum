@@ -8,11 +8,9 @@
 	background-color: #17a2b8;
 }
 .login-page{
-	background-image: url(../../dist/images/user8.jpg);
-
+	background-image: url(assets/images/user8.jpg);
 }
-.login-box{
-	
+.login-box{	
 	width: 40%;
 }
 .login-box-body{

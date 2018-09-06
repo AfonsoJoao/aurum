@@ -14,7 +14,7 @@
           <b>Informações Pessoais</b><br><br>
            <div class="input-group">
                 <span class="input-group-addon">Nome</span>
-                <input type="text" class="form-control" placeholder="Praça">
+                <input type="text" class="form-control" placeholder="Praça" required="">
             </div><br>
         </div><br><br>
         <div class="col-sm-6 invoice-col">
@@ -35,7 +35,7 @@
         <div class="col-sm-10">
           <b>Observações</b><br><br>
            <div class="form-group">
-                  <textarea class="form-control" rows="5" placeholder="Observações..."></textarea>
+                  <textarea style="resize: none" class="form-control" rows="5" placeholder="Observações..."></textarea>
             </div>
         </div><br><br>
       </div>

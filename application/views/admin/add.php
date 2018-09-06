@@ -8,25 +8,27 @@
 	</div>
 	<form action="salvar" name="form_add" method="post">
 		<div class="row invoice-info">
-			<div class="col-sm-10 invoice-col">
+			<div class="col-sm-6 invoice-col">
 				<b>Informações Pessoais</b><br><br>
 				<div class="input-group">
 					<span class="input-group-addon">Nome</span>
-					<input type="text" class="form-control" name="nome" required="">
+					<input type="text" class="form-control" name="nomeAdmin" required="">
+				</div><br>
+				<div class="input-group">
+					<span class="input-group-addon">Login</span>
+					<input type="text" class="form-control" name="loginAdmin" required="">
 				</div>
 				<br>         
 			</div>
 			<br><br>
-			<div class="col-sm-5 invoice-col">
+			<div class="col-sm-6 invoice-col">
 				<div class="input-group">
-					<span class="input-group-addon">Login</span>
-					<input type="text" class="form-control" name="login" required="">
-				</div>
-			</div>  
-			<div class="col-sm-5 invoice-col">
+					<span class="input-group-addon">Email</span>
+					<input type="email" class="form-control" name="emailAdmin" placeholder="example@example.com" required="">
+				</div><br>
 				<div class="input-group">
 					<span class="input-group-addon">Senha</span>
-					<input type="password" class="form-control" name="senha" required="">
+					<input type="password" class="form-control" name="senhaAdmin" required="">
 				</div><br> 
 			</div>
 		</div>
