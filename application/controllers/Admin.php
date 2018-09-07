@@ -1,56 +1,35 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 class Admin extends MY_Controller {
-
-	public function index(){
+    public function __construct(){
+        parent::__construct();
         $this->load->model('admin_model', 'admin');
-
-        $data['admins'] = $this->admin->getAdmin();
-        $this->template->load('template', 'admin/listar', $data);
+    }
+	public function index(){
+        $dados['admins'] = $this->admin->getAdmin();
+        $this->template->load('template', 'admin/listar', $dados);
 
     }
 
     //adcionar adm
     public function adicionar(){
-        //chamando a model
-        $this->load->model('admin_model', 'admin');
-        $data = array();
-        $this->template->load('template', 'admin/add', $data);
-
-    }
-
-    public function salvar(){
+        $dados = array();
         if(!empty($this->input->post('login'))){
-            $this->load->model('admin_model', 'admin');
             $data['login'] = $this->input->post('login');
             $data['senha'] = md5($this->input->post('senha'));
             $data['nome'] = $this->input->post('nome');
-
-            if(!empty($this->input->post('id'))){
-                $this->admin->editAdmin($data, $this->input->post('id'));
-            }else{
-                $this->admin->addAdmin($data);
-            }
+            $data['email'] = $this->input->post('email');
+            $this->admin->addAdmin($data);
+            
         }
-        redirect("/");
+        $this->template->load('template', 'admin/add', $dados);
+
     }
-
+    
     public function editar($id = NULL){
-        if($id == NULL){
-            redirect('/');
-        }
-
-        $this->load->model('admin_model', 'admin');
-
         $query = $this->admin->getAdminById($id);
-        if ($query == NULL) {
-            redirect('/');
-        }
-
-
 
         if(!empty($this->input->post('login'))){
-            $this->load->model('admin_model', 'admin');
             $data['login'] = $this->input->post('login');
             $data['senha'] = md5($this->input->post('senha'));
             $data['nome'] = $this->input->post('nome');
@@ -59,23 +38,16 @@ class Admin extends MY_Controller {
                 $this->admin->editAdmin($data, $this->input->post('id'));
                 $query = $this->admin->getAdminById($id);
             }
-            redirect("/");
         }
+
         $data['admin'] = $query;
 
          $this->template->load('template', 'admin/edit', $data);
     }
 
     public function apagar($id = NULL){
-        if($id == NULL){
-            redirect('/');
-        }
-
-        $this->load->model('admin_model', 'admin');
         $query = $this->admin->getAdminById($id);
-        if ($query == NULL) {
-            redirect('/');
-        }else{
+        if ($query != NULL) {
             $this->admin->apagarAdmin($id);
             redirect('/');
         }

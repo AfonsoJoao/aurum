@@ -20,7 +20,7 @@ class Admin_model extends CI_Model{
 
 	public function getAdminById($id = NULL){
 		if($id != NULL){
-			$this->db->where('id', $id);
+			$this->db->where('idadmin', $id);
 			$this->db->limit(1);
 			$query = $this->db->get("admin");
 			return $query->row();
@@ -28,13 +28,13 @@ class Admin_model extends CI_Model{
 	}
 	public function editAdmin($dados = NULL, $id = NULL){
 		if($dados != NULL && $id != NULL){
-			$this->db->update('admin', $dados, array('id' => $id));
+			$this->db->update('admin', $dados, array('idadmin' => $id));
 		}
 	}
 
 	public function apagarAdmin($id = NULL){
 		if($id != NULL){
-			$this->db->delete('admin', array('id' => $id));
+			$this->db->delete('admin', array('idadmin' => $id));
 		}
 	}
 	public function login($dados = NULL){

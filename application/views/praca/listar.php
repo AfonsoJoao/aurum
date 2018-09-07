@@ -32,10 +32,11 @@
                 <tbody>
                 	<?php foreach ($pracas as $praca): ?>
                 		<tr>
-                	                   			
+                	      <td><?php echo $praca['idPraca'] ?></td>
+                        <td><?php echo $praca['nome'] ?></td>          			
                 			<td>
-                        <button type="button" class="btn btn-primary btn-xs"><a href="<?php echo base_url().'praca/editar/'.$vendedor['id']; ?>"><i class="fa fa-pencil"></i></a></button>
-                        <button type="button" class="btn btn-danger btn-xs"><a href="<?php echo base_url().'praca/apagar/'.$vendedor['id']; ?>"><i class="fa fa-trash"></i></a></button>  
+                        <button type="button" class="btn btn-primary btn-xs"><a href="<?php echo base_url().'praca/editar/'.$praca['idPraca']; ?>"><i class="fa fa-pencil"></i></a></button>
+                        <button type="button" class="btn btn-danger btn-xs"><a href="<?php echo base_url().'praca/apagar/'.$praca['idPraca']; ?>"><i class="fa fa-trash"></i></a></button>  
                         <button type="button" class="btn btn-info btn-xs"><a href=""><i class="fa fa-eye"></i></a></button>  
                       </td>
                 		</tr>

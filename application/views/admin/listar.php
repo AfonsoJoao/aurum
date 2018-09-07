@@ -34,13 +34,13 @@
                 <tbody>
                 	<?php foreach ($admins as $admin): ?>
                 		<tr>
-                			<td><?php echo $admin['id']; ?></td>
+                			<td><?php echo $admin['idadmin']; ?></td>
                 			<td><?php echo $admin['nome']; ?></td>
                 			<td><?php echo $admin['login']; ?></td>
                 			<td><?php echo $admin['senha']; ?></td>
                 			<td>
-                        <button type="button" class="btn btn-primary btn-xs"><a href="<?php echo base_url().'admin/editar/'.$admin['id']; ?>"><i class="fa fa-pencil"></i></a></button>
-                        <button type="button" class="btn btn-danger btn-xs"><a href="<?php echo base_url().'admin/apagar/'.$admin['id']; ?>"><i class="fa fa-trash"></i></a></button>  
+                        <button type="button" class="btn btn-primary btn-xs"><a href="<?php echo base_url().'admin/editar/'.$admin['idadmin']; ?>"><i class="fa fa-pencil"></i></a></button>
+                        <button type="button" class="btn btn-danger btn-xs"><a href="<?php echo base_url().'admin/apagar/'.$admin['idadmin']; ?>"><i class="fa fa-trash"></i></a></button>  
                         <button type="button" class="btn btn-info btn-xs"><a href=""><i class="fa fa-eye"></i></a></button>  
                       </td>
                 		</tr>

@@ -6,17 +6,17 @@
 			</h2>
 		</div>
 	</div>
-	<form action="salvar" name="form_add" method="post">
+	<form action="<?php echo base_url('admin/adicionar') ?>" name="form_add" method="post">
 		<div class="row invoice-info">
 			<div class="col-sm-6 invoice-col">
 				<b>Informações Pessoais</b><br><br>
 				<div class="input-group">
 					<span class="input-group-addon">Nome</span>
-					<input type="text" class="form-control" name="nomeAdmin" required="">
+					<input type="text" class="form-control" name="nome" required="">
 				</div><br>
 				<div class="input-group">
 					<span class="input-group-addon">Login</span>
-					<input type="text" class="form-control" name="loginAdmin" required="">
+					<input type="text" class="form-control" name="login" required="">
 				</div>
 				<br>         
 			</div>
@@ -24,11 +24,11 @@
 			<div class="col-sm-6 invoice-col">
 				<div class="input-group">
 					<span class="input-group-addon">Email</span>
-					<input type="email" class="form-control" name="emailAdmin" placeholder="example@example.com" required="">
+					<input type="email" class="form-control" name="email" placeholder="example@example.com" required="">
 				</div><br>
 				<div class="input-group">
 					<span class="input-group-addon">Senha</span>
-					<input type="password" class="form-control" name="senhaAdmin" required="">
+					<input type="password" class="form-control" name="senha" required="">
 				</div><br> 
 			</div>
 		</div>

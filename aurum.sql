@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: 05-Set-2018 às 23:42
+-- Generation Time: 07-Set-2018 às 00:09
 -- Versão do servidor: 5.7.21
 -- PHP Version: 5.6.35
 
@@ -21,6 +21,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `aurum`
 --
+CREATE DATABASE IF NOT EXISTS `aurum` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `aurum`;
 
 -- --------------------------------------------------------
 
@@ -30,20 +32,21 @@ SET time_zone = "+00:00";
 
 DROP TABLE IF EXISTS `admin`;
 CREATE TABLE IF NOT EXISTS `admin` (
-  `idadmin` int(11) NOT NULL,
+  `idadmin` int(11) NOT NULL AUTO_INCREMENT,
   `login` varchar(10) DEFAULT NULL,
   `senha` varchar(32) DEFAULT NULL,
   `nome` varchar(100) DEFAULT NULL,
   `email` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`idadmin`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 --
 -- Extraindo dados da tabela `admin`
 --
 
 INSERT INTO `admin` (`idadmin`, `login`, `senha`, `nome`, `email`) VALUES
-(1, '555', '15de21c670ae7c3f6f3f1f37029303c9', 'fsdfds', 'andreluizfacanha@gmail.com');
+(1, '555', '47245a321ba33de5579d7890d2417c27', 'Andre', 'andreluizfacanha@gmail.com'),
+(2, '565', '15de21c670ae7c3f6f3f1f37029303c9', 'ANDRE LUIS FAÇANHA DE SOUSA', 'andreluizfacanha@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -5701,6 +5704,28 @@ INSERT INTO `estado` (`idEstado`, `nome`, `uf`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `praca`
+--
+
+DROP TABLE IF EXISTS `praca`;
+CREATE TABLE IF NOT EXISTS `praca` (
+  `idPraca` int(11) NOT NULL AUTO_INCREMENT,
+  `nome` varchar(50) DEFAULT NULL,
+  `observacao` text,
+  PRIMARY KEY (`idPraca`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+
+--
+-- Extraindo dados da tabela `praca`
+--
+
+INSERT INTO `praca` (`idPraca`, `nome`, `observacao`) VALUES
+(2, 'fs', NULL),
+(3, 'g', 'ger');
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `vendedor`
 --
 
@@ -5716,6 +5741,23 @@ CREATE TABLE IF NOT EXISTS `vendedor` (
   `estado` int(11) NOT NULL,
   PRIMARY KEY (`idVendedor`,`endereco`,`cidade`,`estado`),
   KEY `fk_vendedor_endereco1_idx` (`endereco`,`cidade`,`estado`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `vendedor_has_praca`
+--
+
+DROP TABLE IF EXISTS `vendedor_has_praca`;
+CREATE TABLE IF NOT EXISTS `vendedor_has_praca` (
+  `idVendedorPraca` int(11) NOT NULL AUTO_INCREMENT,
+  `idVendedor` int(11) NOT NULL,
+  `praca_idPraca` int(11) NOT NULL,
+  `chefeEquipe` tinyint(1) DEFAULT NULL,
+  PRIMARY KEY (`idVendedorPraca`,`idVendedor`,`praca_idPraca`),
+  KEY `fk_vendedor_has_praca_praca1_idx` (`praca_idPraca`),
+  KEY `fk_vendedor_has_praca_vendedor1_idx` (`idVendedor`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -5739,6 +5781,13 @@ ALTER TABLE `endereco`
 --
 ALTER TABLE `vendedor`
   ADD CONSTRAINT `fk_vendedor_endereco1` FOREIGN KEY (`endereco`,`cidade`,`estado`) REFERENCES `endereco` (`idEndereco`, `cidade`, `estado`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Limitadores para a tabela `vendedor_has_praca`
+--
+ALTER TABLE `vendedor_has_praca`
+  ADD CONSTRAINT `fk_vendedor_has_praca_praca1` FOREIGN KEY (`praca_idPraca`) REFERENCES `praca` (`idPraca`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_vendedor_has_praca_vendedor1` FOREIGN KEY (`idVendedor`) REFERENCES `vendedor` (`idVendedor`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
